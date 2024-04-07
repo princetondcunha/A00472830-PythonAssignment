@@ -28,4 +28,11 @@ def identify(uploaded_file):
 
     predictions = tf.nn.softmax(predictions).numpy()
 
-    return np.argmax(predictions)
+    predicted = np.argmax(predictions)
+
+    print(predictions[0][predicted])
+
+    if predictions[0][predicted] > 0.6:
+        return predicted
+    else:
+        return None
